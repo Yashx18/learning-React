@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  let [counterVisible, setCounterVisible] = useState(true);
+  useEffect(() => {
+    // setInterval(() => {
+    //   setCounterVisible((c) => !c);
+    // }, 5000);
+  }, []);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          Count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  return <div>{counterVisible ? <Counter></Counter> : null}</div>;
 }
 
-export default App
+// Mounting
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  // mounting, re-rendering , unmounting
+
+  // Hooking into the Lifecycle Events of React
+
+  console.log("Counter");
+
+  // useEffect hook makes sure that no matter how many times the code re-renders, the code in useEffect hook run only one at the Mounting.
+
+  useEffect(function () {
+    // let clock = setInterval(() => {
+    //   setCount((count) => count + 1);
+    // }, 1000);
+    // console.log('on mount');
+
+
+    // This is the cleanup code that runs when the component unmounts.
+    // return function () {
+    //   clearInterval(clock);
+    //   console.log('on unmount');
+    // };
+  }, []);// Empty Array '[]' is dependency array.
+
+  return (
+    <div>
+      <h1>{count}</h1>
+    </div>
+  );
+}
+
+export default App;
