@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
   let [counterVisible, setCounterVisible] = useState(true);
@@ -8,7 +9,212 @@ function App() {
     // }, 5000);
   }, []);
 
-  return <div>{counterVisible ? <Counter></Counter> : null}</div>;
+  return (
+    <div>
+      <ProfileCard
+        name="Ken Yeager"
+        title="Still I Rise"
+        profileImg="https://i.pinimg.com/736x/3b/33/47/3b3347c6e29f5b364d7b671b6a799943.jpg"
+        backgroundImg="https://i.pinimg.com/736x/be/18/01/be1801f7a656759668e85467e21695a8.jpg"
+        profileViewers="41,982"
+        postImpressions="1,124"
+      />
+      <br />
+      <PostComponent />
+      <br />
+      <PostComponent />
+    </div>
+  );
+}
+
+// Style CSS
+const style = {
+  width: "100%",
+  borderColor: "grey",
+  borderRadius: 5,
+  display: "flex",
+  color: "black",
+};
+
+const userInfo = {
+  fontSize: 11,
+  fontWeight: 500,
+};
+
+// Post Component
+function PostComponent() {
+  return (
+    <div
+      style={{
+        padding: 10,
+        backgroundColor: "white",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 5,
+        width: 420,
+        backgroundColor: "#7f8c8d",
+      }}
+    >
+      {/* Image section */}
+      <div style={style}>
+        <img
+          src="https://i.pinimg.com/736x/cc/ca/9b/ccca9b6ae3a94c94a3e5a623ca5784b8.jpg"
+          style={{
+            height: 60,
+            width: 60,
+            borderRadius: 50,
+            border: "1px solid #2c3e50",
+          }}
+        />
+        <div
+          style={{
+            marginLeft: 10,
+            textAlign: "left",
+          }}
+        >
+          <b>Guts</b>
+          <div style={userInfo}>10,000 followers</div>
+          <div style={userInfo}>12m</div>
+        </div>
+      </div>
+      <div
+        style={{
+          color: "black",
+          textAlign: "left",
+        }}
+      >
+        Want to know how to win big ? How these students made over $5000 in
+        bounties?
+      </div>
+    </div>
+  );
+}
+
+// Styling for Profile Card
+const statsText = {
+  fontSize: 14,
+  color: "grey",
+};
+const stats = {
+  fontSize: 14,
+  color: "blue",
+  fontWeight: 500,
+};
+
+const statsLine = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  width: "90%",
+};
+
+// Profile Card Component
+function ProfileCard(props) {
+  return (
+    <div
+      style={{
+        width: 220,
+        borderRadius: 6,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#e3e1e1",
+        color: "black",
+      }}
+    >
+      {/* BackGround */}
+      <div
+        style={{
+          width: "100%",
+        }}
+      >
+        <img
+          src={props.backgroundImg}
+          alt="Background Image"
+          style={{
+            height: 80,
+            width: "100%",
+            borderRadius: "5px 5px 0 0 ",
+          }}
+        />
+      </div>
+
+      {/* Profile */}
+      <div
+        style={{
+          borderBottom: "1.5px solid grey",
+          width: "100%",
+          padding: "45px 0 25px",
+          position: "relative",
+        }}
+      >
+        {/* Profile Image Section */}
+        <img
+          src={props.profileImg}
+          style={{
+            height: 70,
+            width: 70,
+            borderRadius: 60,
+            border: "2px solid white",
+            position: "absolute",
+            top: "-45px",
+            right: "32%",
+            left: "32%",
+          }}
+        />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <span
+            style={{
+              fontSize: 20,
+              fontWeight: 700,
+              marginBottom: 2,
+            }}
+          >
+            {props.name}
+          </span>
+          <span
+            style={{
+              fontSize: 14,
+              fontWeight: 400,
+            }}
+          >
+            {props.title}
+          </span>
+        </div>
+      </div>
+
+      {/* Profile Stats */}
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "10px 0 20px",
+        }}
+      >
+        <div style={statsLine}>
+          <span style={statsText}>Profile viewers</span>
+          <span style={stats}>{props.profileViewers}</span>
+        </div>
+        <div style={statsLine}>
+          <span style={statsText}>Post Impressions</span>
+          <span style={stats}>{props.postImpressions}</span>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 // Mounting
@@ -28,14 +234,12 @@ function Counter() {
     //   setCount((count) => count + 1);
     // }, 1000);
     // console.log('on mount');
-
-
     // This is the cleanup code that runs when the component unmounts.
     // return function () {
     //   clearInterval(clock);
     //   console.log('on unmount');
     // };
-  }, []);// Empty Array '[]' is dependency array.
+  }, []); // Empty Array '[]' is dependency array.
 
   return (
     <div>
