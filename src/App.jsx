@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { PostComponent } from "../post";
 import "./App.css";
 
 function App() {
@@ -20,74 +21,23 @@ function App() {
         postImpressions="1,124"
       />
       <br />
-      <PostComponent />
+      <Comp />
       <br />
-      <PostComponent />
-    </div>
-  );
-}
-
-// Style CSS
-const style = {
-  width: "100%",
-  borderColor: "grey",
-  borderRadius: 5,
-  display: "flex",
-  color: "black",
-};
-
-const userInfo = {
-  fontSize: 11,
-  fontWeight: 500,
-};
-
-// Post Component
-function PostComponent() {
-  return (
-    <div
-      style={{
-        padding: 10,
-        backgroundColor: "white",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 5,
-        width: 420,
-        backgroundColor: "#7f8c8d",
-      }}
-    >
-      {/* Image section */}
-      <div style={style}>
-        <img
-          src="https://i.pinimg.com/736x/cc/ca/9b/ccca9b6ae3a94c94a3e5a623ca5784b8.jpg"
-          style={{
-            height: 60,
-            width: 60,
-            borderRadius: 50,
-            border: "1px solid #2c3e50",
-          }}
-        />
-        <div
-          style={{
-            marginLeft: 10,
-            textAlign: "left",
-          }}
-        >
-          <b>Guts</b>
-          <div style={userInfo}>10,000 followers</div>
-          <div style={userInfo}>12m</div>
-        </div>
-      </div>
-      <div
-        style={{
-          color: "black",
-          textAlign: "left",
-        }}
-      >
-        Want to know how to win big ? How these students made over $5000 in
-        bounties?
-      </div>
+      <PostComponent
+        name="Berserker"
+        follower="10,000"
+        subtitle="12m"
+        clockImg="https://img.icons8.com/?size=100&id=82767&format=png&color=000000"
+        content="Want to know how to win big ? How these students made over $5000 in bounties?"
+      />
+      <br />
+      <PostComponent
+        name="Berserker"
+        follower="10,000"
+        subtitle="12m"
+        clockImg="https://img.icons8.com/?size=100&id=82767&format=png&color=000000"
+        content="Want to know how to win big ? How these students made over $5000 in bounties?"
+      />
     </div>
   );
 }
@@ -244,6 +194,21 @@ function Counter() {
   return (
     <div>
       <h1>{count}</h1>
+    </div>
+  );
+}
+
+// Learning about the useState Hook
+function Comp() {
+  const [isVisible, setIsVisible] = useState(true);
+  function toggle() {
+    setIsVisible(!isVisible);
+  }
+  return (
+    <div>
+      <button onClick={toggle}>Click me</button>
+
+      {isVisible ? <p>The message is being rendered</p> : null}
     </div>
   );
 }
