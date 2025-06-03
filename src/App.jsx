@@ -1,17 +1,21 @@
 import { useState, useEffect } from "react";
 import { PostComponent } from "../post";
+import { Prototype } from "../build";
+import { Hooks } from "../hooks";
 import "./App.css";
 
 function App() {
   let [counterVisible, setCounterVisible] = useState(true);
-  useEffect(() => {
-    // setInterval(() => {
-    //   setCounterVisible((c) => !c);
-    // }, 5000);
-  }, []);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     setCounterVisible((c) => !c);
+  //   }, 5000);
+  // }, []);
 
   return (
     <div>
+      <Prototype />
+      <br />
       <ProfileCard
         name="Ken Yeager"
         title="Still I Rise"
@@ -38,6 +42,8 @@ function App() {
         clockImg="https://img.icons8.com/?size=100&id=82767&format=png&color=000000"
         content="Want to know how to win big ? How these students made over $5000 in bounties?"
       />
+      <br />
+      {counterVisible ? <Hooks /> : null}
     </div>
   );
 }
@@ -45,11 +51,11 @@ function App() {
 // Styling for Profile Card
 const statsText = {
   fontSize: 14,
-  color: "grey",
+  color: "#dff9fb",
 };
 const stats = {
   fontSize: 14,
-  color: "blue",
+  color: "#808e9b",
   fontWeight: 500,
 };
 
@@ -71,8 +77,8 @@ function ProfileCard(props) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#e3e1e1",
-        color: "black",
+        backgroundColor: "black",
+        color: "white",
       }}
     >
       {/* BackGround */}
