@@ -6,22 +6,22 @@ export function Prototype() {
   const [responseData, setResponseData] = useState("");
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoading(true);
-    console.log(`Backend request sent to ${currentTab} tab.`);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   console.log(`Backend request sent to ${currentTab} tab.`);
 
-    axios
-      .get(`http://localhost:3000/${currentTab}`)
-      .then((response) => {
-        setResponseData(response.data.message);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setResponseData("Failed to load Data");
-        setLoading(false);
-      });
-  }, [currentTab]);
+  //   axios
+  //     .get(`http://localhost:3000/${currentTab}`)
+  //     .then((response) => {
+  //       setResponseData(response.data.message);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //       setResponseData("Failed to load Data");
+  //       setLoading(false);
+  //     });
+  // }, [currentTab]);
 
   return (
     <div>

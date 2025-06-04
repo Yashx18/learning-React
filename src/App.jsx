@@ -1,3 +1,6 @@
+import { Card } from "../cards";
+
+import { Todo } from "../cards";
 import { useState, useEffect } from "react";
 import { PostComponent } from "../post";
 import { Prototype } from "../build";
@@ -14,6 +17,44 @@ function App() {
 
   return (
     <div>
+      <Todo />
+
+      {/* Card Compnent which uses Children Props as shown below. */}
+      <Card>
+        <div
+          style={{
+            backgroundColor: "black",
+            color: "white",
+            border: "1px solid #ccc",
+            borderRadius: "10px",
+            padding: "10px",
+            textAlign: "left",
+          }}
+        >
+          <h2>Hey Guys.</h2>
+          <p>
+            This is a Card Component which uses Children Props to display
+            content.
+          </p>
+        </div>
+      </Card>
+      <br />
+      <Card>
+        <div
+          style={{
+            backgroundColor: "black",
+            color: "white",
+            border: "1px solid #ccc",
+            borderRadius: "10px",
+            padding: "10px",
+            textAlign: "left",
+          }}
+        >
+          <h2>Hey Guys.</h2>
+          <p>This is just the Card Component being used with Children Props.</p>
+        </div>
+      </Card>
+      <br />
       <Prototype />
       <br />
       <ProfileCard
